@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>ch.wadeck.fips</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    
+    <name>Parent</name>
+    <description>
+        Parent for libraries and CLI
+    </description>
+    
+    <scm>
+        <connection>scm:git:ssh://git@github.com/wadeck/fips-recursion.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/wadeck/fips-recursion.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <properties>
+        <java.level>8</java.level>
+    </properties>
+    
+    <modules>
+        <module>cli</module>
+        <module>lib-a</module>
+        <module>lib-b</module>
+    </modules>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.${java.level}</source>
+                    <target>1.${java.level}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>ch.wadeck.fips</groupId>
+                <artifactId>lib-a</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.wadeck.fips</groupId>
+                <artifactId>lib-b</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
